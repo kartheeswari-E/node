@@ -15,7 +15,7 @@ import { MongoClient } from "mongodb";
 
 const app = express();
    
-const PORT = 4005;
+const PORT = process.env.PORT;
 const hai="hai"
 app.use(express.json());
 
