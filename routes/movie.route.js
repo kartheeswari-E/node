@@ -1,27 +1,25 @@
-import express from express
+import express from "express";
 const router= express.Router();
-import{client} from"..node41.js"
+import 
+{ updatemoviename,
+ updatemovienamegiven,
+ createmovie,
+ updateMovies, 
+ deletemovie } from "../services/flim.service.js";
 
 router.get("/", async function (request, response) {
     if(request.query.ratinrouter){
     request.query.rating=+ request.query.rating
     }
-        const datas= await updateMovies(request);
-        response.send(datas);});
-
-        router.get("/:name", function (request, response) {
-        const {name}=request.params;
-    console.log(name);
-   const movies= newFunction(name)
-   movies?response.send(movies):response.status(404).send("msg not found")
-});
-
+        const datas= await updatemoviename (request);
+        response.send(datas);
+    });
 
 router.get("/:name", async function (request, response) {
 const {name}=request.params;
     // console.log(name);
 //    const movies= flims.find((mv)=>mv.name===name)
-const movies=await updatemoviename(name);
+const movies=await updatemovienamegiven(name);
    movies?response.send(movies):response.status(404).send("msg not found")
 });
 
@@ -42,7 +40,7 @@ router.put("/:name", async function (request, response) {
  del?response.send(del):response.status(404).send("msg not found")
  });
 
-app.delete("/:id", async function (request, response) {
+router.delete("/:id", async function (request, response) {
    const {id}=request.params
     // console.log(name);
 //    const movies= flims.find((mv)=>mv.name===name)
@@ -51,33 +49,3 @@ del.deletedCount>0?response.send(del):response.status(404).send("msg not found")
 });
 export default router;
 
-async function newFunction(name, data) {
-    return await client
-
-        .db("node").collection("flims").updateOne({ name: name }, { $set: data });
-}
-
-function newFunction(name) {
-    return flims.find((mv) => mv.name === name);
-}
-
-async function deletemovie(id) {
-    return await client
-
-        .db("node").collection("flims").deleteOne({ id: id });
-}
-
-async function createmovie(data) {
-    return await client
-        .db("node").collection("flims").insertMany(data);
-}
-
-async function updatemoviename(name) {
-    return await client
-        .db("node").collection("flims").filter({ name: name });
-}
-
-async function updatemoviename(request) {
-    return await client
-        .db("node").collection("flims").find(request.query).toArray();
-}

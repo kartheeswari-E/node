@@ -5,7 +5,7 @@
 //npm start dev===>instalation 
 //find:it shows only the 1st match..no carry about how many matches are there
 //filter:it shows all the matches result
-import movierouter from '..routes.movie.route.js'
+import flimRouter from './routes/movie.route.js'
 import express from 'express'
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -32,7 +32,8 @@ const MONGO_URL =process.env.MONGO_URL
     const client=new MongoClient(MONGO_URL);//mongodb+node.js =>connect
 
 await client.connect();//mongodb+node.js =>connect
-app.use("/flim",movierouter)
+console.log("Mongo is connected");
+app.use('/flim',flimRouter)
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
 
