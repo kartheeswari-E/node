@@ -16,9 +16,11 @@ import { MongoClient } from "mongodb";
 const app = express();
    
 const PORT = process.env.PORT;
-const hai="hai"
 app.use(express.json());
 
+app.get("/", function (request, response) {
+    response.send("🙋‍♂️, 🌏 Today express learn");
+  });
 
 // app.get("/flim", async function (request, response) {
 //     const datas= await client

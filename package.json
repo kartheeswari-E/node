@@ -2,7 +2,7 @@
   "name": "node",
   "version": "1.0.0",
   "description": "",
-  "main": "node41.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js",

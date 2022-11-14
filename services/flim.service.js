@@ -1,4 +1,4 @@
-import { client } from "../node41.js";
+import { client } from "../index.js";
 
 export async function updateMovies(name, data) {
     return await client
@@ -16,7 +16,7 @@ export async function createmovie(data) {
 }
 export async function updatemovienamegiven(name) {
     return await client
-        .db("node").collection("flims").filter({ name: name });
+        .db("node").collection("flims").findOne({ name: name });
 }
 export async function updatemoviename(request) {
     return await client

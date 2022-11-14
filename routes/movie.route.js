@@ -17,7 +17,7 @@ router.get("/", async function (request, response) {
 
 router.get("/:name", async function (request, response) {
 const {name}=request.params;
-    // console.log(name);
+
 //    const movies= flims.find((mv)=>mv.name===name)
 const movies=await updatemovienamegiven(name);
    movies?response.send(movies):response.status(404).send("msg not found")
